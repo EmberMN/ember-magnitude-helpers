@@ -51,7 +51,7 @@ module('Integration | Helper | mg-prefix', function(hooks) {
         useName: false,
         expected: '789.0 TiB'
       }
-    ].map(x => Object.assign({ type: 'iec' }, x)),
+    ].map((x: object) => Object.assign({ type: 'iec' }, x)),
     si: [
       {
         n: 0.0254,
@@ -72,7 +72,7 @@ module('Integration | Helper | mg-prefix', function(hooks) {
         useName: true,
         expected: '1.21 gigawatts'
       }
-    ].map(x => Object.assign({ type: 'si' }, x)),
+    ].map((x: object) => Object.assign({ type: 'si' }, x)),
     unusual: [
       {
         n: -Infinity,
@@ -137,7 +137,8 @@ module('Integration | Helper | mg-prefix', function(hooks) {
   };
 
   const caseList = Object.keys(cases).reduce((list: any, group) => {
-    list.push(...cases[group].map(x => Object.assign({ group }, x)));
+    // @ts-ignore FIXME: appease TS7053
+    list.push(...cases[group].map((x: object) => Object.assign({ group }, x)));
     return list;
   }, []);
 
@@ -151,7 +152,8 @@ module('Integration | Helper | mg-prefix', function(hooks) {
       this.set('unit', unit);
       this.set('useName', useName);
       await render(hbs`{{mg-prefix n precision=precision type=type unit=unit useName=useName}}`);
-      assert.equal(this.element.textContent.trim(), expected);
+      const textContent = <string>this.element.textContent;
+      assert.equal(textContent.trim(), expected);
     });
   });
 });

@@ -81,6 +81,7 @@ export function mgPrefix(
 
   const symbols = new Array(maxOrder - minOrder + 1).fill(0)
     .map((_z, i) => minOrder + i)
+    // @ts-ignore FIXME: Figure out how to resolve TS7053 below
     .map(ord => prefixes[type][ord][useName ? 'name' : 'abbr']);
   const symbol = symbols[order - minOrder];
 
