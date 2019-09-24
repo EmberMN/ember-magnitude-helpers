@@ -25,7 +25,7 @@ Pass a number as the first parameter, optionally followed any/all of the followi
 * useName: `false` for abbrevation (e.g. 'G'), `true` for name (e.g. 'giga') (default = `false`)
 
 Examples:
-```
+```hbs
 {{mg-prefix 123456}} => '123 k'
 {{mg-prefix 1024 type="si" unit="bytes"}} => '1.02 kbytes'
 {{mg-prefix 2e6 precision=1 type="iec" unit="B"}} => '2 MiB'
