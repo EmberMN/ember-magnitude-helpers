@@ -1,13 +1,16 @@
 {
   "name": "ember-magnitude-helpers",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "A set of ember helpers related to the orders of magnitude of numbers",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "iec",
+    "si",
+    "magnitude"
   ],
-  "repository": "",
+  "repository": "https://github.com/EmberMN/ember-magnitude-helpers",
   "license": "MIT",
-  "author": "",
+  "author": "Jacob Quant <jacobq@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
