@@ -45,6 +45,27 @@ Examples:
 {{mg-prefix 1e12 unit="flops" useName=true}} => '1.00 teraflops'
 ```
 
+You can also import this helper into JS like this:
+```js
+// some-component.js
+import { tracked } from '@glimmer/tracking';
+import Component from '@ember/component';
+import { mgPrefix }  from 'ember-magnitude-helpers/helpers/mg-prefix';
+
+export default class SomeComponent extends Component {
+  @tracked bytes = 1234567890;
+
+  get humanSize() {
+    // returns "1.15 GiB"
+    return mgPrefix([this.bytes], {
+      unit: 'B',
+      type: 'iec',
+    });
+  }
+}
+```
+
+
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
