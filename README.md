@@ -11,6 +11,13 @@ This addon provides the following helpers:
 
 * `mg-prefix` (written as a replacement for [`ember-number-to-human-size`](https://github.com/kellysutton/ember-number-to-human-size))
 
+## Compatibility
+
+(according to the default blueprint at least)
+
+* Ember.js v3.12 or above
+* Ember CLI v2.13 or above
+* Node.js v10 or above
 
 ## Installation
 
@@ -37,16 +44,6 @@ Examples:
 {{mg-prefix 2e6 precision=1 type="iec" unit="B"}} => '2 MiB'
 {{mg-prefix 1e12 unit="flops" useName=true}} => '1.00 teraflops'
 ```
-
-
-## Compatibility
-
-(according to the default blueprint at least)
-
-* Ember.js v3.8 or above
-* Ember CLI v2.13 or above
-* Node.js v8 or above
-
 
 ## Contributing
 
