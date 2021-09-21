@@ -21,6 +21,20 @@ module.exports = {
   },
   rules: {},
   overrides: [
+    // typescript
+    {
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      files: ['**/*.ts'],
+      excludedFiles: ['*.d.ts', 'types/'],
+      parser: '@typescript-eslint/parser',
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+      },
+    },
     // node files
     {
       files: [
