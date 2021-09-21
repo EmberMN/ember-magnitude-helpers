@@ -53,7 +53,7 @@ export function mgPrefix(
     unit?: string;
     useName?: boolean;
   } = {}
-) {
+): string {
   // Sanity check inputs for consumer's convenience
   if (Object.keys(otherNamedArgs || {}).length > 0) {
     log(
@@ -67,9 +67,6 @@ export function mgPrefix(
       otherValues
     );
   }
-  // TODO: Appease/suppress TS warning on next line -- function could be called by JS with non-numeric input
-  //       even though we specify that only numeric parameters are acceptable here.
-  // @ts-ignore
   if (typeof firstValue !== 'number') {
     log(
       `The value parameter should be numeric but was ${typeof firstValue}:`,
@@ -106,7 +103,6 @@ export function mgPrefix(
   const symbols = new Array(maxOrder - minOrder + 1)
     .fill(0)
     .map((_z, i) => minOrder + i)
-    // @ts-ignore FIXME: Figure out how to resolve TS7053 below
     .map((ord) => prefixes[type][ord][useName ? 'name' : 'abbr']);
   const symbol = symbols[order - minOrder];
 

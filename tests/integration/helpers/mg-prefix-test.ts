@@ -57,7 +57,7 @@ module('Integration | Helper | mg-prefix', function (hooks) {
         useName: false,
         expected: '789.0 TiB',
       },
-    ].map((x: object) => Object.assign({ type: 'iec' }, x)),
+    ].map((x) => Object.assign({ type: 'iec' }, x)),
     si: [
       {
         n: 0.0254,
@@ -80,7 +80,7 @@ module('Integration | Helper | mg-prefix', function (hooks) {
         useName: true,
         expected: '1.21 gigawatts',
       },
-    ].map((x: object) => Object.assign({ type: 'si' }, x)),
+    ].map((x) => Object.assign({ type: 'si' }, x)),
     unusual: [
       {
         n: -Infinity,
@@ -151,8 +151,7 @@ module('Integration | Helper | mg-prefix', function (hooks) {
   };
 
   const caseList = Object.keys(cases).reduce((list: any, group) => {
-    // @ts-ignore FIXME: appease TS7053
-    list.push(...cases[group].map((x: object) => Object.assign({ group }, x)));
+    list.push(...cases[group].map((x) => Object.assign({ group }, x)));
     return list;
   }, []);
 
