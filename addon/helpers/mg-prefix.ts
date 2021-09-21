@@ -36,30 +36,54 @@ const prefixes = {
     6: { abbr: 'E', name: 'exa' },
     7: { abbr: 'Z', name: 'zetta' },
     8: { abbr: 'Y', name: 'yotta' },
-  }
+  },
 };
 
 export function mgPrefix(
   [firstValue, ...otherValues]: number[],
-  { precision = 3, type = 'si', unit = '', useName = false, ...otherNamedArgs }:
-    { precision?: number; type?: 'iec' | 'si', unit?: string, useName?: boolean } = {}
+  {
+    precision = 3,
+    type = 'si',
+    unit = '',
+    useName = false,
+    ...otherNamedArgs
+  }: {
+    precision?: number;
+    type?: 'iec' | 'si';
+    unit?: string;
+    useName?: boolean;
+  } = {}
 ) {
   // Sanity check inputs for consumer's convenience
   if (Object.keys(otherNamedArgs || {}).length > 0) {
-    log(`Received unrecognized named arguments. The following will be ignored:`, otherNamedArgs);
+    log(
+      `Received unrecognized named arguments. The following will be ignored:`,
+      otherNamedArgs
+    );
   }
   if ((otherValues || []).length > 0) {
-    log(`Received more arguments than expected. The following will be ignored:`, otherValues);
+    log(
+      `Received more arguments than expected. The following will be ignored:`,
+      otherValues
+    );
   }
   // TODO: Appease/suppress TS warning on next line -- function could be called by JS with non-numeric input
   //       even though we specify that only numeric parameters are acceptable here.
   // @ts-ignore
   if (typeof firstValue !== 'number') {
-    log(`The value parameter should be numeric but was ${typeof firstValue}:`, firstValue, `Zero will be used instead.`);
+    log(
+      `The value parameter should be numeric but was ${typeof firstValue}:`,
+      firstValue,
+      `Zero will be used instead.`
+    );
     firstValue = 0;
   }
   if (typeof useName !== 'boolean') {
-    log(`The useName parameter should be boolean but was ${typeof useName}:`, useName, `False will be used instead.`);
+    log(
+      `The useName parameter should be boolean but was ${typeof useName}:`,
+      useName,
+      `False will be used instead.`
+    );
     useName = false;
   }
   if (['iec', 'si'].indexOf(type) === -1) {
@@ -74,20 +98,26 @@ export function mgPrefix(
   const base = type === 'iec' ? 1024 : 1000;
   const power = n > 0 ? Math.floor(Math.log(n) / Math.log(base)) : 0;
 
-  const orders = Object.keys(prefixes[type]).map(s => parseInt(s,10)); // unsorted but don't care
+  const orders = Object.keys(prefixes[type]).map((s) => parseInt(s, 10)); // unsorted but don't care
   const minOrder = Math.min(...orders);
   const maxOrder = Math.max(...orders);
   const order = Math.min(maxOrder, Math.max(minOrder, power));
 
-  const symbols = new Array(maxOrder - minOrder + 1).fill(0)
+  const symbols = new Array(maxOrder - minOrder + 1)
+    .fill(0)
     .map((_z, i) => minOrder + i)
     // @ts-ignore FIXME: Figure out how to resolve TS7053 below
-    .map(ord => prefixes[type][ord][useName ? 'name' : 'abbr']);
+    .map((ord) => prefixes[type][ord][useName ? 'name' : 'abbr']);
   const symbol = symbols[order - minOrder];
 
-  const result = order === 0 ? n : (n / Math.pow(base, order)).toPrecision(precision);
+  const result =
+    order === 0 ? n : (n / Math.pow(base, order)).toPrecision(precision);
 
-  return htmlSafe(`${isNegative ? '-' : ''}${result}${symbol ? ` ${symbol}` : ''}${(symbol && unit) ? '' : ' '}${unit}`);
+  return htmlSafe(
+    `${isNegative ? '-' : ''}${result}${symbol ? ` ${symbol}` : ''}${
+      symbol && unit ? '' : ' '
+    }${unit}`
+  );
 }
 
 export default helper(mgPrefix);
