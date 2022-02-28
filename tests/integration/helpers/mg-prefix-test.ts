@@ -185,7 +185,7 @@ module('Integration | Helper | mg-prefix', function (hooks) {
           hbs`{{mg-prefix this.n precision=this.precision type=this.type unit=this.unit useName=this.useName}}`
         );
         const textContent = <string>this.element.textContent;
-        assert.equal(textContent.trim(), expected);
+        assert.strictEqual(textContent.trim(), expected);
       });
     }
   );
