@@ -182,7 +182,7 @@ module('Integration | Helper | mg-prefix', function (hooks) {
         this.set('unit', unit);
         this.set('useName', useName);
         await render(
-          hbs`{{mg-prefix n precision=precision type=type unit=unit useName=useName}}`
+          hbs`{{mg-prefix this.n precision=this.precision type=this.type unit=this.unit useName=this.useName}}`
         );
         const textContent = <string>this.element.textContent;
         assert.equal(textContent.trim(), expected);
