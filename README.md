@@ -49,7 +49,7 @@ You can also import this helper into JS like this:
 ```js
 // some-component.js
 import { tracked } from '@glimmer/tracking';
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { mgPrefix }  from 'ember-magnitude-helpers/helpers/mg-prefix';
 
 export default class SomeComponent extends Component {
