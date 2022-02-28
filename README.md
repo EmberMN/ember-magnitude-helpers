@@ -15,8 +15,8 @@ This addon provides the following helpers:
 
 (according to the default blueprint at least)
 
-* Ember.js v3.20 or above
-* Ember CLI v3.20 or above
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
 * Node.js v12 or above
 
 ## Installation
