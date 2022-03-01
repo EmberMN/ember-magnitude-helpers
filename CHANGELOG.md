@@ -7,6 +7,10 @@
 - Update ember-cli to 4.1.1
 - Mass-upgrade dependencies (except eslint, which was kept at 7 to avoid a potential incompatibility with babel-parser)
 
+### Fixed 🔧
+
+- [#8]: Put `debug` in `peerDependencies` (and hope this does what it should...)
+
 ### Under the hood 🚗
 
 - Use GitHub actions instead of Travis for CI
