@@ -1,6 +1,5 @@
 import { helper } from '@ember/component/helper';
-import { htmlSafe } from '@ember/string';
-
+import { htmlSafe } from '@ember/template';
 import debug from 'debug';
 const log = debug('ember-magnitude-helpers:mgPrefix');
 
@@ -53,7 +52,7 @@ export function mgPrefix(
     unit?: string;
     useName?: boolean;
   } = {}
-): string {
+) {
   // Sanity check inputs for consumer's convenience
   if (Object.keys(otherNamedArgs || {}).length > 0) {
     log(
