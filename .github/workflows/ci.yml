@@ -16,7 +16,6 @@ jobs:
   test:
     name: "Tests"
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - uses: actions/checkout@v2
@@ -88,7 +87,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
       - name: Install Dependencies
         run: yarn install
       - name: Upgrade Dependencies
