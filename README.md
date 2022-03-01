@@ -3,7 +3,7 @@
 [![Latest NPM release](https://img.shields.io/npm/v/ember-magnitude-helpers?style=flat-square)](https://www.npmjs.com/package/ember-magnitude-helpers)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FEmberMN%2Fember-magnitude-helpers%2Fbadge&style=flat-square)](https://actions-badge.atrox.dev/EmberMN/ember-magnitude-helpers/goto)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/EmberMN/ember-magnitude-helpers?style=flat-square)](https://codeclimate.com/github/EmberMN/ember-magnitude-helpers)
-[![Ember Observer Score](https://emberobserver.com/badges/EmberMN/ember-magnitude-helpers.svg)](https://emberobserver.com/addons/ember-magnitude-helpers)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-magnitude-helpers.svg)](https://emberobserver.com/addons/ember-magnitude-helpers)
 
 Want to convert a quantity like 5000981077504 bytes to 5.0TB or 4.55 TiB in your [Ember.js](https://emberjs.com) app?
 This addon provides the following helpers:
