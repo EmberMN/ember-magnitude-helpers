@@ -3,19 +3,32 @@ import { htmlSafe } from '@ember/template';
 import debug from 'debug';
 const log = debug('ember-magnitude-helpers:mgPrefix');
 
+interface MagnitudePrefix {
+  abbr: string;
+  name: string;
+}
+
+interface MagnitudePrefixTable {
+  [index: number]: MagnitudePrefix;
+}
+
+interface MagnitudePrefixTableGroups {
+  [key: string]: MagnitudePrefixTable;
+}
+
 // See https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes
 // and https://en.wikipedia.org/wiki/Binary_prefix#Adoption_by_IEC,_NIST_and_ISO
-const prefixes = {
+const prefixes: MagnitudePrefixTableGroups = {
   iec: {
-    0: { abbr: '', name: '' },
-    1: { abbr: 'Ki', name: 'kibi' },
-    2: { abbr: 'Mi', name: 'mebi' },
-    3: { abbr: 'Gi', name: 'gibi' },
-    4: { abbr: 'Ti', name: 'tebi' },
-    5: { abbr: 'Pi', name: 'pebi' },
-    6: { abbr: 'Ei', name: 'exbi' },
-    7: { abbr: 'Zi', name: 'zebi' },
-    8: { abbr: 'Yi', name: 'yobi' },
+    '0': { abbr: '', name: '' },
+    '1': { abbr: 'Ki', name: 'kibi' },
+    '2': { abbr: 'Mi', name: 'mebi' },
+    '3': { abbr: 'Gi', name: 'gibi' },
+    '4': { abbr: 'Ti', name: 'tebi' },
+    '5': { abbr: 'Pi', name: 'pebi' },
+    '6': { abbr: 'Ei', name: 'exbi' },
+    '7': { abbr: 'Zi', name: 'zebi' },
+    '8': { abbr: 'Yi', name: 'yobi' },
   },
   si: {
     '-8': { abbr: 'y', name: 'yocto' },
@@ -26,15 +39,15 @@ const prefixes = {
     '-3': { abbr: 'n', name: 'nano' },
     '-2': { abbr: 'μ', name: 'micro' },
     '-1': { abbr: 'm', name: 'milli' },
-    0: { abbr: '', name: '' },
-    1: { abbr: 'k', name: 'kilo' },
-    2: { abbr: 'M', name: 'mega' },
-    3: { abbr: 'G', name: 'giga' },
-    4: { abbr: 'T', name: 'tera' },
-    5: { abbr: 'P', name: 'peta' },
-    6: { abbr: 'E', name: 'exa' },
-    7: { abbr: 'Z', name: 'zetta' },
-    8: { abbr: 'Y', name: 'yotta' },
+    '0': { abbr: '', name: '' },
+    '1': { abbr: 'k', name: 'kilo' },
+    '2': { abbr: 'M', name: 'mega' },
+    '3': { abbr: 'G', name: 'giga' },
+    '4': { abbr: 'T', name: 'tera' },
+    '5': { abbr: 'P', name: 'peta' },
+    '6': { abbr: 'E', name: 'exa' },
+    '7': { abbr: 'Z', name: 'zetta' },
+    '8': { abbr: 'Y', name: 'yotta' },
   },
 };
 
