@@ -67,7 +67,9 @@ module('Integration | Helper | mg-prefix', function (hooks) {
       expected: '789.0 TiB',
     },
   ];
-  iecCases.forEach((iecCase) => { iecCase.type = 'iec'; });
+  iecCases.forEach((iecCase) => {
+    iecCase.type = 'iec';
+  });
 
   const siCases: Partial<MagnitudePrefixCase>[] = [
     {
@@ -92,7 +94,9 @@ module('Integration | Helper | mg-prefix', function (hooks) {
       expected: '1.21 gigawatts',
     },
   ];
-  siCases.forEach((siCase) => { siCase.type = 'si'; });
+  siCases.forEach((siCase) => {
+    siCase.type = 'si';
+  });
 
   const unusualCases: Partial<MagnitudePrefixCase>[] = [
     {
@@ -170,36 +174,26 @@ module('Integration | Helper | mg-prefix', function (hooks) {
     readme: readmeExampleCases,
   };
   for (const [groupName, casesForGroup] of Object.entries(cases)) {
-    casesForGroup.forEach(c => c.group = groupName);
+    casesForGroup.forEach((c) => (c.group = groupName));
   }
 
   const caseList = Object.values(cases).flat();
 
-  caseList.forEach(
-    (testCase: MagnitudePrefixCase) => {
-      const {
-        group,
-        n,
-        precision,
-        type,
-        unit,
-        useName,
-        expected,
-      } = testCase;
-      test(`${group}: it shows ${n}${
-        unit ? ' ' + unit : ''
-      } (type=${type}, precision=${precision}, useName=${useName}) as ${expected}`, async function (assert) {
-        this.set('n', n);
-        this.set('precision', precision);
-        this.set('type', type);
-        this.set('unit', unit);
-        this.set('useName', useName);
-        await render(
-          hbs`{{mg-prefix this.n precision=this.precision type=this.type unit=this.unit useName=this.useName}}`
-        );
-        const textContent = <string>this.element.textContent;
-        assert.strictEqual(textContent.trim(), expected);
-      });
-    }
-  );
+  caseList.forEach((testCase: MagnitudePrefixCase) => {
+    const { group, n, precision, type, unit, useName, expected } = testCase;
+    test(`${group}: it shows ${n}${
+      unit ? ' ' + unit : ''
+    } (type=${type}, precision=${precision}, useName=${useName}) as ${expected}`, async function (assert) {
+      this.set('n', n);
+      this.set('precision', precision);
+      this.set('type', type);
+      this.set('unit', unit);
+      this.set('useName', useName);
+      await render(
+        hbs`{{mg-prefix this.n precision=this.precision type=this.type unit=this.unit useName=this.useName}}`
+      );
+      const textContent = <string>this.element.textContent;
+      assert.strictEqual(textContent.trim(), expected);
+    });
+  });
 });
