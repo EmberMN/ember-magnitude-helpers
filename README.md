@@ -14,16 +14,14 @@ This addon provides the following helpers:
 
 (according to the default blueprint at least)
 
-* Ember.js v3.24 or above
-* Ember CLI v3.24 or above
-* Node.js v12 or above
+* Ember CLI v4.12 or above
+* Node.js v18 or above
 
 ## Installation
 
-```
+```bash
 ember install ember-magnitude-helpers
 ```
-
 
 ## Usage
 
@@ -34,9 +32,10 @@ Pass a number as the first parameter, optionally followed any/all of the followi
 * precision: round to this many digits (default = 3)
 * type: '`si`' for base 1000, '`iec`' for base 1024 (default = 'si')
 * unit: arbitrary string (default = '')
-* useName: `false` for abbrevation (e.g. 'G'), `true` for name (e.g. 'giga') (default = `false`)
+* useName: `false` for abbreviation (e.g. 'G'), `true` for name (e.g. 'giga') (default = `false`)
 
-Examples:
+Examples (classic):
+
 ```hbs
 {{mg-prefix 123456}} => '123 k'
 {{mg-prefix 1024 type="si" unit="bytes"}} => '1.02 kbytes'
@@ -44,12 +43,27 @@ Examples:
 {{mg-prefix 1e12 unit="flops" useName=true}} => '1.00 teraflops'
 ```
 
+Example (template tag):
+
+```gjs
+// some-component.gjs
+import { mgPrefix } from 'ember-magnitude-helpers';
+
+<template>
+  {{mgPrefix 123456}} => '123 k'
+  {{mgPrefix 1024 type="si" unit="bytes"}} => '1.02 kbytes'
+  {{mgPrefix 2e6 precision=1 type="iec" unit="B"}} => '2 MiB'
+  {{mgPrefix 1e12 unit="flops" useName=true}} => '1.00 teraflops'
+</template>
+```
+
 You can also import this helper into JS like this:
+
 ```js
 // some-component.js
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
-import { mgPrefix }  from 'ember-magnitude-helpers/helpers/mg-prefix';
+import { mgPrefix } from 'ember-magnitude-helpers';
 
 export default class SomeComponent extends Component {
   @tracked bytes = 1234567890;
@@ -64,11 +78,9 @@ export default class SomeComponent extends Component {
 }
 ```
 
-
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
-
 
 ## License
 

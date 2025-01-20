@@ -1,0 +1,106 @@
+{
+  "name": "ember-magnitude-helpers",
+  "version": "2.0.0",
+  "description": "A set of ember helpers related to the orders of magnitude of numbers",
+  "keywords": [
+    "ember-addon",
+    "iec",
+    "si",
+    "magnitude"
+  ],
+  "repository": "https://github.com/EmberMN/ember-magnitude-helpers",
+  "license": "MIT",
+  "author": "Jacob Quant <jacobq@gmail.com>",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm format",
+    "lint:format": "prettier . --cache --check --write",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "glint",
+    "prepack": "rollup --config",
+    "start": "rollup --config --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.9.0",
+    "decorator-transforms": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/eslint-parser": "^7.26.5",
+    "@babel/plugin-transform-typescript": "^7.26.7",
+    "@babel/runtime": "^7.26.7",
+    "@embroider/addon-dev": "^7.1.1",
+    "@eslint/js": "^9.19.0",
+    "@glint/core": "^1.5.2",
+    "@glint/environment-ember-loose": "^1.5.2",
+    "@glint/environment-ember-template-imports": "^1.5.2",
+    "@glint/template": "^1.5.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@tsconfig/ember": "^3.0.9",
+    "babel-plugin-ember-template-compilation": "^2.3.0",
+    "concurrently": "^9.1.2",
+    "ember-source": "^6.1.0",
+    "ember-template-lint": "^6.0.0",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-ember": "^12.3.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.15.1",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-ember-template-tag": "^2.0.4",
+    "rollup": "^4.32.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "stylelint": "^16.14.1",
+    "stylelint-config-standard": "^37.0.0",
+    "typescript": "~5.7.3",
+    "typescript-eslint": "^8.22.0"
+  },
+  "peerDependencies": {
+    "ember-source": ">= 4.12.0"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "app-js": {
+      "./helpers/mg-prefix.js": "./dist/_app_/helpers/mg-prefix.js"
+    },
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2
+  },
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist"
+  ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  }
+}
